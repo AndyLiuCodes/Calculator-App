@@ -1,0 +1,130 @@
+*{
+    font-family: arial;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+body{
+    background: #a6192e;
+}
+
+#page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#outerContainer{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 90%;
+    height: 92%;
+    background-color: #3d3935;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(50,50,50,0.75);
+    min-width: 800px;
+}
+
+#innerContainer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -51%);
+    width: 100%;
+    height: 93%;
+    background-color: #fff;
+    min-width: 700px;
+}
+
+#innerContainer h2{
+    padding-top: 3%;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    font-size: 2em;
+    font-weight: lighter;
+}
+
+#content {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #e9eff1; 
+    width: 75%;
+    height: 80%;
+    margin-left: 1%;
+    min-width: 600px;
+}
+
+#content h3{
+    color: #b5111a;
+    padding-top: 25px;
+}
+
+#contentContainer{
+    height: 100%;
+    width: 98%;
+    margin: 0 auto;
+}
+
+#contentContainer p{
+    font: normal 100% Cambria,Georgia,"Times New Roman",Times,serif;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.slash{
+    font-size: 1.5em;
+}
+#contentTable{
+    background-color: #e9eff1;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    border-collapse: collapse;
+    width: 99%;
+    height: 55%;
+}
+
+th{
+    background-color: lightgrey;
+    padding: 0;
+    margin: 0;
+    height: 24px;
+    text-align: left;
+    border: 1px solid darkgrey;
+    padding-left: 5px;
+}
+
+td {
+    border: 1px solid darkgrey;
+    text-align: left;
+    padding-left: 5px;
+    height: 70px;
+    min-width: 100px;
+    max-width: 200px;
+}
+
+input{
+    width: 80px;
+    height: 30px;
+    border-style: none;
+    border: 1px solid darkgrey;
+    border-radius: 2px;
+    margin-top: 3px;
+}
+
+#buttons {
+    position: relative;
+    top: 10%;
+    float: right;
+}
+#buttons button{
+    background-color: #A6192E;
+    color: #fff;
+    width: 90px;
+    height: 30px;
+    border-style: none;
+    border-radius: 3px;
+    font-weight: bolder;
+    margin-right: 15px;
+}
