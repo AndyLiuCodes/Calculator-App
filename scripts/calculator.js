@@ -14,6 +14,47 @@ var a4Weight = document.getElementById("weightA4");
 var a4Score = document.getElementById("scoredA4");
 var a4Total = document.getElementById("totalA4");
 
+var meanCalc = document.getElementById("mean");
+var weightCalc = document.getElementById("weighted");
+
+var numActivities = 4;
+
+meanCalc.addEventListener("click", function(){
+    let percentageTotal = 0;
+    let numActivitiesFilled = 0;
+    for(let i = 1; i <= numActivities; i++){
+        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML); 
+        
+        if(isNaN(gradeVal) == false){
+            percentageTotal += gradeVal;
+            numActivitiesFilled += 1;
+        }
+    }
+    
+    let percentageAvg = percentageTotal/numActivitiesFilled;
+
+    document.getElementById("result").innerHTML = `Your mean grade is: ${percentageAvg}/100`;
+});
+
+weightCalc.addEventListener("click", function(){
+    let percentageTotal = 0;
+    let weightTotal = 0;
+
+    for(let i = 1; i <= numActivities; i++){
+        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML); 
+        let weightVal = parseFloat(document.getElementById(`${"weightA" + String(i)}`).value);
+        
+        if(isNaN(gradeVal) == false){
+            weightTotal += weightVal;
+            percentageTotal += gradeVal*weightVal/100;
+        }
+    }
+
+    let percentageAvg = percentageTotal/weightTotal * 100
+
+    document.getElementById("result").innerHTML = `Your weighted grade is: ${percentageAvg}/100`;
+});
+
 a1Score.addEventListener("input", function(){
     let percent = document.getElementById("percent1");
     percent.innerHTML = `${(parseFloat(a1Score.value)/parseFloat(a1Total.value)*100).toFixed(2)}%`;
