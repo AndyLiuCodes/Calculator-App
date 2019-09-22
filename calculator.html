@@ -22,47 +22,53 @@
                         <h3><strong>Activities</strong></h3>
 
                         <p>Give grades to the numeric activities:</p>
-                        <table id="contentTable">
-                            <tr>
-                                <th>Name</th>
-                                <th>Short Name</th>
-                                <th>Weight</th>
-                                <th>Grade</th>
-                                <th>Percent</th>
-                            </tr>
+                        <div id="scrollWrap">
+                            <table id="contentTable">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Short Name</th>
+                                    <th>Weight</th>
+                                    <th>Grade</th>
+                                    <th>Percent</th>
+                                </tr>
 
-                            <tr id="r1">
-                                <td>Activity 1</td>
-                                <td>A1</td>
-                                <td><input class="input" id="weightA1"></td>
-                                <td class="slash"><input class="input" id="scoredA1">/<br><input class="input" id="totalA1"></td>
-                                <td id="percent1"></td>
-                            </tr>
+                                <tr id="r1">
+                                    <td>Activity 1</td>
+                                    <td>A1</td>
+                                    <td><input class="input" id="weightA1"></td>
+                                    <td class="slash"><input class="input" id="scoredA1">/<br><input class="input"
+                                            id="totalA1"></td>
+                                    <td id="percent1"></td>
+                                </tr>
 
-                            <tr id="r2">
-                                <td>Activity 2</td>
-                                <td>A2</td>
-                                <td><input class="input" id="weightA2"></td>
-                                <td class="slash"><input class="input" id="scoredA2">/<br><input class="input" id="totalA2"></td>
-                                <td id="percent2"></td>
-                            </tr>
+                                <tr id="r2">
+                                    <td>Activity 2</td>
+                                    <td>A2</td>
+                                    <td><input class="input" id="weightA2"></td>
+                                    <td class="slash"><input class="input" id="scoredA2">/<br><input class="input"
+                                            id="totalA2"></td>
+                                    <td id="percent2"></td>
+                                </tr>
 
-                            <tr id="r3">
-                                <td>Activity 3</td>
-                                <td>A3</td>
-                                <td><input class="input" id="weightA3"></td>
-                                <td class="slash"><input class="input" id="scoredA3">/<br><input class="input" id="totalA3"></td>
-                                <td id="percent3"></td>
-                            </tr>
+                                <tr id="r3">
+                                    <td>Activity 3</td>
+                                    <td>A3</td>
+                                    <td><input class="input" id="weightA3"></td>
+                                    <td class="slash"><input class="input" id="scoredA3">/<br><input class="input"
+                                            id="totalA3"></td>
+                                    <td id="percent3"></td>
+                                </tr>
 
-                            <tr id="r4">
-                                <td>Activity 4</td>
-                                <td>A4</td>
-                                <td><input class="input" id="weightA4"></td>
-                                <td class="slash"><input class="input" id="scoredA4">/<br><input class="input" id="totalA4"></td>
-                                <td id="percent4"></td>
-                            </tr>
-                        </table>
+                                <tr id="r4">
+                                    <td>Activity 4</td>
+                                    <td>A4</td>
+                                    <td><input class="input" id="weightA4"></td>
+                                    <td class="slash"><input class="input" id="scoredA4">/<br><input class="input"
+                                            id="totalA4"></td>
+                                    <td id="percent4"></td>
+                                </tr>
+                            </table>
+                        </div>
 
                         <div>
                             <h3><strong>Result</strong></h3>
@@ -71,6 +77,7 @@
                         </div>
 
                         <div id="buttons">
+                            <button id="rowAdd">New Activity</button>
                             <button id="weighted">WEIGHTED</button>
                             <button id="mean">MEAN</button>
                         </div>
