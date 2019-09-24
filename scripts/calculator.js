@@ -1,117 +1,229 @@
 let meanCalc = document.getElementById("mean");
 let weightCalc = document.getElementById("weighted");
 let newRow = document.getElementById("rowAdd");
+let displayChange = document.getElementById("darkMode");
 
 let numActivities = 4;
 
-for(let i = 1; i <= numActivities; i++){
+let displayMode = "light";
+
+for (let i = 1; i <= numActivities; i++) {
     let currentIteration = i;
 
     let score = document.getElementById(`scoredA${i}`);
     let total = document.getElementById(`totalA${i}`);
 
-    score.addEventListener("input", function(){
+    score.addEventListener("input", function () {
         let percent = document.getElementById(`percent${currentIteration}`);
-        let grade = (parseFloat(score.value)/parseFloat(total.value)*100).toFixed(2);
-        if (score.value == "" && total.value =="" ){
+        let grade = (parseFloat(score.value) / parseFloat(total.value) * 100).toFixed(2);
+        if (score.value == "" && total.value == "") {
             percent.innerHTML = "";
         }
-        else{
+        else {
             percent.innerHTML = `${grade}`;
         }
     });
-    
-    total.addEventListener("input", function(){
+
+    total.addEventListener("input", function () {
         let percent = document.getElementById(`percent${currentIteration}`);
-        let grade = (parseFloat(score.value)/parseFloat(total.value)*100).toFixed(2);
-        if (score.value == "" && total.value =="" ){
+        let grade = (parseFloat(score.value) / parseFloat(total.value) * 100).toFixed(2);
+        if (score.value == "" && total.value == "") {
             percent.innerHTML = "";
         }
-        else{
+        else {
             percent.innerHTML = `${grade}`;
         }
     });
 }
 
-meanCalc.addEventListener("click", function(){
+meanCalc.addEventListener("click", function () {
     let percentageTotal = 0;
     let numActivitiesFilled = 0;
-    for(let i = 1; i <= numActivities; i++){
-        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML); 
-        
-        if(isNaN(gradeVal) == false){
+    for (let i = 1; i <= numActivities; i++) {
+        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML);
+
+        if (isNaN(gradeVal) == false) {
             percentageTotal += gradeVal;
             numActivitiesFilled += 1;
         }
     }
-    
-    let percentageAvg = percentageTotal/numActivitiesFilled;
+
+    let percentageAvg = percentageTotal / numActivitiesFilled;
 
     document.getElementById("result").innerHTML = `Your mean grade is: ${percentageAvg.toFixed(2)}/100`;
 });
 
-weightCalc.addEventListener("click", function(){
+weightCalc.addEventListener("click", function () {
     let percentageTotal = 0;
     let weightTotal = 0;
 
-    for(let i = 1; i <= numActivities; i++){
-        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML); 
+    for (let i = 1; i <= numActivities; i++) {
+        let gradeVal = parseFloat(document.getElementById(`${"percent" + String(i)}`).innerHTML);
         let weightVal = parseFloat(document.getElementById(`${"weightA" + String(i)}`).value);
-        
-        if(isNaN(gradeVal) == false){
+
+        if (isNaN(gradeVal) == false) {
             weightTotal += weightVal;
-            percentageTotal += gradeVal*weightVal/100;
+            percentageTotal += gradeVal * weightVal / 100;
         }
     }
 
-    let percentageAvg = percentageTotal/weightTotal * 100
+    let percentageAvg = percentageTotal / weightTotal * 100
 
     document.getElementById("result").innerHTML = `Your weighted grade is: ${percentageAvg}/100`;
 });
 
-newRow.addEventListener("click", function(){
+newRow.addEventListener("click", function () {
     numActivities += 1;
     let currentIteration = numActivities;
     let table = document.getElementById("contentTable");
     let tableRow = document.createElement("tr");
     tableRow.setAttribute("id", `r${numActivities}`)
-    tableRow.innerHTML += `<td>Activity ${numActivities}</td>`;
-    tableRow.innerHTML += `<td>A${numActivities}</td>`;
-    tableRow.innerHTML += `<td><input class="input" id="weightA${numActivities}"></td>`;
-    tableRow.innerHTML += `<td class="slash"><input class="input" id="scoredA${numActivities}">/<br><input class="input" id="totalA${numActivities}"></td>`;
-    tableRow.innerHTML += `<td id="percent${numActivities}"></td>`;
+    tableRow.innerHTML += `<td class ="text">Activity ${numActivities}</td>`;
+    tableRow.innerHTML += `<td class ="text">A${numActivities}</td>`;
+    tableRow.innerHTML += `<td><input class="input" class ="text" id="weightA${numActivities}"></td>`;
+    tableRow.innerHTML += `<td class="slash"><input class="input" id="scoredA${numActivities}" class ="text">/<br><input class="input" id="totalA${numActivities}" class ="text"></td>`;
+    tableRow.innerHTML += `<td id="percent${numActivities}" class ="text"></td>`;
     table.appendChild(tableRow);
 
     let score = document.getElementById(`scoredA${numActivities}`);
     let total = document.getElementById(`totalA${numActivities}`);
 
-    score.addEventListener("input", function(){
+    score.addEventListener("input", function () {
         let percent = document.getElementById(`percent${currentIteration}`);
-        let grade = (parseFloat(score.value)/parseFloat(total.value)*100).toFixed(2);
-        if (score.value == "" && total.value =="" ){
+        let grade = (parseFloat(score.value) / parseFloat(total.value) * 100).toFixed(2);
+        if (score.value == "" && total.value == "") {
             percent.innerHTML = "";
         }
-        else{
+        else {
             percent.innerHTML = `${grade}`;
         }
     });
-    
-    total.addEventListener("input", function(){
+
+    total.addEventListener("input", function () {
         let percent = document.getElementById(`percent${currentIteration}`);
-        let grade = (parseFloat(score.value)/parseFloat(total.value)*100).toFixed(2);
-        if (score.value == "" && total.value =="" ){
+        let grade = (parseFloat(score.value) / parseFloat(total.value) * 100).toFixed(2);
+        if (score.value == "" && total.value == "") {
             percent.innerHTML = "";
         }
-        else{
+        else {
             percent.innerHTML = `${grade}`;
         }
-        
+
     });
 
     let objDiv = document.getElementById("scrollWrap");
     objDiv.scrollTop = objDiv.scrollHeight;
+
+    //Changes the newly added rows to the appropriate mode
+    if(displayMode == "light"){
+        changeLightMode();
+    }
+    else{
+        changeDarkMode();
+    }
 });
 
 
+displayChange.addEventListener("click", function(){
+    if(displayMode == "light"){
+        changeDarkMode();
+    }
+    else{
+        changeLightMode();
+    }
+});
+
+function changeLightMode(){
+    let text = document.querySelectorAll(".text");
+    let body = document.querySelector("body");
+    let innerBg = document.getElementById("innerContainer");
+    let content = document.getElementById("content");
+    let contentTable = document.getElementById("contentTable");
+    let outerContainer = document.getElementById("outerContainer")
+    let th = document.querySelectorAll("th");
+    let input = document.querySelectorAll("input");
+    let slash = document.querySelectorAll(".slash");
+    let button = document.querySelectorAll("button");
+    let h3Text = document.querySelectorAll("h3");
+
+    displayMode = "light";
+
+        displayChange.innerHTML = "Dark Mode";
+
+        slash.forEach(function (e) {
+            e.style.color = "black";
+        })
+
+        input.forEach(function (e) {
+            e.style.backgroundColor = "white";
+            e.style.color = "black"
+        });
+
+        th.forEach(function (e) {
+            e.style.backgroundColor = "lightgrey";
+        });
+
+        outerContainer.style.backgroundColor = "#3d3935";
+        contentTable.style.backgroundColor = "#e9eff1"
+        content.style.backgroundColor = "#e9eff1"
+        innerBg.style.backgroundColor = "#fff";
+        body.style.backgroundColor = "#a6192e";
+
+        text.forEach(function (e) {
+            e.style.color = "black";
+        });
+
+        button.forEach(function (e) {
+            e.style.background = "#A6192E";
+            e.style.color = "white"
+        });
+
+        h3Text.forEach(function (e) {
+            e.style.color = "#b5111a";
+        });
+}
+
+function changeDarkMode(){
+    let text = document.querySelectorAll(".text");
+    let body = document.querySelector("body");
+    let innerBg = document.getElementById("innerContainer");
+    let content = document.getElementById("content");
+    let contentTable = document.getElementById("contentTable");
+    let outerContainer = document.getElementById("outerContainer")
+    let th = document.querySelectorAll("th");
+    let input = document.querySelectorAll("input");
+    let slash = document.querySelectorAll(".slash");
+    let button = document.querySelectorAll("button");
+    let h3Text = document.querySelectorAll("h3");
+
+    displayMode = "dark";
+
+        displayChange.innerHTML = "Light Mode";
+
+        button.forEach(function (e) {
+            e.style.background = "#000000";
+        });
+        slash.forEach(function (e) {
+            e.style.color = "white";
+        })
+
+        input.forEach(function (e) {
+            e.style.backgroundColor = "#181818";
+            e.style.color = "white"
+        });
+
+        th.forEach(function (e) {
+            e.style.backgroundColor = "#282828";
+        });
+
+        outerContainer.style.backgroundColor = "#282828";
+        contentTable.style.backgroundColor = "#282828"
+        content.style.backgroundColor = "#282828"
+        innerBg.style.backgroundColor = "#282828";
+        body.style.backgroundColor = "#181818";
+        text.forEach(function (e) {
+            e.style.color = "white";
+        });
+}
 
 
