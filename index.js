@@ -10,9 +10,8 @@ const pool = new Pool({
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
-  .set('public', path.join(__dirname, 'public'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('public/calculator'))
+
+  .get('/', (req, res) => res.render('index.html'))
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
