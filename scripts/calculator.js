@@ -7,7 +7,6 @@ var reg = new RegExp('^[0-9]+$');
 
 let numActivities = 4;
 let displayMode = "light";
-let errorArr = []; //keeps track if theres an error on an row of the table
 
 for (let i = 1; i <= numActivities; i++) {
     let currentIteration = i;
@@ -24,7 +23,12 @@ for (let i = 1; i <= numActivities; i++) {
             percent.innerHTML = "";
         }
         else {
-            percent.innerHTML = `${grade}`;
+            if((isNaN(grade) || grade < 0) && score.value != ""){
+                percent.innerHTML = "ERROR: Invalid grade input, enter a numeric value greater or equal 0"
+            }
+            else{
+                percent.innerHTML = `${grade}`;
+            }
         }
     });
 
@@ -36,14 +40,13 @@ for (let i = 1; i <= numActivities; i++) {
             percent.innerHTML = "";
         }
         else {
-            percent.innerHTML = `${grade}`;
+            if((isNaN(grade) || grade < 0) && total.value != ""){
+                percent.innerHTML = "ERROR: Invalid grade input, enter a numeric value greater or equal 0"
+            }
+            else{
+                percent.innerHTML = `${grade}`;
+            }
         }
-    });
-
-    weight.addEventListener("input", function () {
-        let weightVal = parseFloat(document.getElementById(`${"weightA" + String(i)}`).value);
-
-
     });
 }
 
